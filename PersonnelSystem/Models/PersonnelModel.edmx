@@ -117,18 +117,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Department_Department">
-          <End Role="Department" Type="Self.Department" Multiplicity="1" />
-          <End Role="Department1" Type="Self.Department" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Department">
-              <PropertyRef Name="DepartmentId" />
-            </Principal>
-            <Dependent Role="Department1">
-              <PropertyRef Name="DepartmentId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Employee_Department">
           <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
           <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
@@ -205,10 +193,6 @@
             <End Role="Department" EntitySet="Department" />
             <End Role="Course" EntitySet="Course" />
           </AssociationSet>
-          <AssociationSet Name="FK_Department_Department" Association="Self.FK_Department_Department">
-            <End Role="Department" EntitySet="Department" />
-            <End Role="Department1" EntitySet="Department" />
-          </AssociationSet>
           <AssociationSet Name="FK_Employee_Department" Association="Self.FK_Employee_Department">
             <End Role="Department" EntitySet="Department" />
             <End Role="Employee" EntitySet="Employee" />
@@ -284,8 +268,6 @@
           <Property Name="Info" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Course" Relationship="Self.FK_Course_Department" FromRole="Department" ToRole="Course" />
-          <NavigationProperty Name="Department1" Relationship="Self.FK_Department_Department" FromRole="Department" ToRole="Department1" />
-          <NavigationProperty Name="Department2" Relationship="Self.FK_Department_Department" FromRole="Department1" ToRole="Department" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Department" FromRole="Department" ToRole="Employee" />
           <NavigationProperty Name="Wage" Relationship="Self.FK_Wage_Department" FromRole="Department" ToRole="Wage" />
         </EntityType>
@@ -359,18 +341,6 @@
               <PropertyRef Name="DepartmentId" />
             </Principal>
             <Dependent Role="Course">
-              <PropertyRef Name="DepartmentId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Department_Department">
-          <End Role="Department" Type="Self.Department" Multiplicity="1" />
-          <End Role="Department1" Type="Self.Department" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Department">
-              <PropertyRef Name="DepartmentId" />
-            </Principal>
-            <Dependent Role="Department1">
               <PropertyRef Name="DepartmentId" />
             </Dependent>
           </ReferentialConstraint>
@@ -450,10 +420,6 @@
           <AssociationSet Name="FK_Course_Department" Association="Self.FK_Course_Department">
             <End Role="Department" EntitySet="Department" />
             <End Role="Course" EntitySet="Course" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Department_Department" Association="Self.FK_Department_Department">
-            <End Role="Department" EntitySet="Department" />
-            <End Role="Department1" EntitySet="Department" />
           </AssociationSet>
           <AssociationSet Name="FK_Employee_Department" Association="Self.FK_Employee_Department">
             <End Role="Department" EntitySet="Department" />

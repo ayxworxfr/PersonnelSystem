@@ -20,12 +20,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Address)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Department1.DepartmentName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Department2.DepartmentName)
-        </th>
         <th></th>
     </tr>
 
@@ -39,12 +33,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Department1.DepartmentName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Department2.DepartmentName)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.DepartmentId }) |

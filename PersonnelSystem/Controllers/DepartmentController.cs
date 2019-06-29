@@ -17,8 +17,7 @@ namespace PersonnelSystem.Controllers
         // GET: Department
         public ActionResult Index()
         {
-            var department = db.Department.Include(d => d.Department1).Include(d => d.Department2);
-            return View(department.ToList());
+            return View(db.Department.ToList());
         }
 
         // GET: Department/Details/5
@@ -39,8 +38,6 @@ namespace PersonnelSystem.Controllers
         // GET: Department/Create
         public ActionResult Create()
         {
-            ViewBag.DepartmentId = new SelectList(db.Department, "DepartmentId", "DepartmentName");
-            ViewBag.DepartmentId = new SelectList(db.Department, "DepartmentId", "DepartmentName");
             return View();
         }
 
@@ -58,8 +55,6 @@ namespace PersonnelSystem.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.DepartmentId = new SelectList(db.Department, "DepartmentId", "DepartmentName", department.DepartmentId);
-            ViewBag.DepartmentId = new SelectList(db.Department, "DepartmentId", "DepartmentName", department.DepartmentId);
             return View(department);
         }
 
@@ -75,8 +70,6 @@ namespace PersonnelSystem.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.DepartmentId = new SelectList(db.Department, "DepartmentId", "DepartmentName", department.DepartmentId);
-            ViewBag.DepartmentId = new SelectList(db.Department, "DepartmentId", "DepartmentName", department.DepartmentId);
             return View(department);
         }
 
@@ -93,8 +86,6 @@ namespace PersonnelSystem.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.DepartmentId = new SelectList(db.Department, "DepartmentId", "DepartmentName", department.DepartmentId);
-            ViewBag.DepartmentId = new SelectList(db.Department, "DepartmentId", "DepartmentName", department.DepartmentId);
             return View(department);
         }
 

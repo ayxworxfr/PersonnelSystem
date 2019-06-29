@@ -4,17 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0b51b84d532148c9a292e9f635b4c145" Name="Diagram1">
+      <Diagram DiagramId="3cc21878e899448d9ffb952d65bdc31e" Name="Diagram1">
         <EntityTypeShape EntityType="PersonnelSystemModel.Company" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PersonnelSystemModel.Contract" Width="1.5" PointX="8.25" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="PersonnelSystemModel.Course" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PersonnelSystemModel.Department" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PersonnelSystemModel.Department" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="PersonnelSystemModel.Employee" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="PersonnelSystemModel.Position" Width="1.5" PointX="3.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="PersonnelSystemModel.Wage" Width="1.5" PointX="11.25" PointY="5" IsExpanded="true" />
         <AssociationConnector Association="PersonnelSystemModel.FK_Contract_Employee" ManuallyRouted="false" />
         <AssociationConnector Association="PersonnelSystemModel.FK_Course_Department" ManuallyRouted="false" />
-        <AssociationConnector Association="PersonnelSystemModel.FK_Department_Department" ManuallyRouted="false" />
         <AssociationConnector Association="PersonnelSystemModel.FK_Employee_Department" ManuallyRouted="false" />
         <AssociationConnector Association="PersonnelSystemModel.FK_Wage_Department" ManuallyRouted="false" />
         <AssociationConnector Association="PersonnelSystemModel.FK_Employee_Position" ManuallyRouted="false" />

@@ -112,18 +112,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Department_Department">
-    <End Role="Department" Type="Self.Department" Multiplicity="1" />
-    <End Role="Department1" Type="Self.Department" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="Department">
-        <PropertyRef Name="DepartmentId" />
-      </Principal>
-      <Dependent Role="Department1">
-        <PropertyRef Name="DepartmentId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Employee_Department">
     <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
     <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
@@ -199,10 +187,6 @@
     <AssociationSet Name="FK_Course_Department" Association="Self.FK_Course_Department">
       <End Role="Department" EntitySet="Department" />
       <End Role="Course" EntitySet="Course" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Department_Department" Association="Self.FK_Department_Department">
-      <End Role="Department" EntitySet="Department" />
-      <End Role="Department1" EntitySet="Department" />
     </AssociationSet>
     <AssociationSet Name="FK_Employee_Department" Association="Self.FK_Employee_Department">
       <End Role="Department" EntitySet="Department" />
