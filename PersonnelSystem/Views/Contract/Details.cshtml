@@ -1,0 +1,74 @@
+﻿@model PersonnelSystem.Models.Contract
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Contract</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SignTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SignTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RenewCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RenewCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProbationarySalary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProbationarySalary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OfficialSalary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OfficialSalary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ContractId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

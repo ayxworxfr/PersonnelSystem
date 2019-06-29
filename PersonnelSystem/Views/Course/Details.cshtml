@@ -1,0 +1,90 @@
+﻿@model PersonnelSystem.Models.Course
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Course</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CourseName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CourseName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hours)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hours)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccruedCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccruedCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AttendedCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AttendedCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CourseRemark)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CourseRemark)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Department.DepartmentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Department.DepartmentName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CourseCode }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
