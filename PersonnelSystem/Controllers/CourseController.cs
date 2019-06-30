@@ -52,8 +52,8 @@ namespace PersonnelSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Course.Add(course);
-                db.SaveChanges();
+                //db.Course.Add(course);
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
 

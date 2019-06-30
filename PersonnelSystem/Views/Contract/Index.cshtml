@@ -6,9 +6,20 @@
 
 <h2>Index</h2>
 
-<p>
+<div>
     @Html.ActionLink("Create New", "Create")
-</p>
+</div>
+
+<div class="row">
+    <div class="col-lg-6 col-lg-offset-3">
+        <div class="input-group">
+            <input type="text" class="form-control form_text" placeholder="Search By EmployeeId...">
+            <span class="input-group-btn">
+                <button id="sub" class="btn btn-default" type="button">Search</button>
+            </span>
+        </div>
+    </div>
+</div><br />
 <table class="table">
     <tr>
         <th>
@@ -35,35 +46,62 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.SignTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EndTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RenewCount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProbationarySalary)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OfficialSalary)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Employee.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ContractId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ContractId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ContractId })
-        </td>
-    </tr>
-}
+    @foreach (PersonnelSystem.Models.Contract item in ViewBag.Contract != null ? ViewBag.Contract : Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SignTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RenewCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProbationarySalary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OfficialSalary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ContractId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ContractId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ContractId })
+            </td>
+        </tr>
+    }
 
 </table>
+
+
+<script src="/Scripts/jquery-3.3.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#sub").bind("click", function () {
+            $(function () {
+                $('#sub').click(function () {
+                    $.ajax({
+                        type: "POST",
+                        url: "http://localhost:5276/Contract/FindContract",
+                        data: { employeeId: $(".form_text").val() },
+                        dataType: "json",
+                        error: function () {
+                            alert('smx失败 ');
+                        },
+                        success: function (data) {
+                            alert(data)
+                        }
+                    });
+                });
+            });
+        });
+    });
+
+</script>

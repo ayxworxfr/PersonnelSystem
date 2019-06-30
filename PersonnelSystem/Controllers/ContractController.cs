@@ -14,6 +14,21 @@ namespace PersonnelSystem.Controllers
     {
         private PersonnelSystemEntities db = new PersonnelSystemEntities();
 
+
+        [HttpPost]
+        public ActionResult FindContract(int? employeeId)
+        {
+            if (employeeId == null)
+            {
+                return RedirectToAction("Index");
+            }
+            var contracts = db.Contract.Where<Contract>(p => p.EmployeeId == employeeId).ToList();
+            if(contracts.Count == 0)
+                return Json("Not found!");
+            ViewBag.Contracts = contracts;
+            return RedirectToAction("Index");
+        }
+
         // GET: Contract
         public ActionResult Index()
         {
