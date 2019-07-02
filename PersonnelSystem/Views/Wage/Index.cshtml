@@ -9,6 +9,9 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<p>
+    @Html.ActionLink("FindWage", "FindWage")
+</p>
 <table class="table">
     <tr>
         <th>
@@ -38,38 +41,39 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.BasicWage)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Subsidise)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AwardMoney)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FinedMoney)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FinalWage)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Department.DepartmentName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Employee.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Position.Position1)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.WageId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.WageId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.WageId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BasicWage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subsidise)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AwardMoney)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FinedMoney)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FinalWage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department.DepartmentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position.Position1)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.WageId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.WageId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.WageId })
+            </td>
+        </tr>
+    }
 
 </table>

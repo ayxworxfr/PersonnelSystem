@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "FindWage";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - WORXFR</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="/Scripts/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#sub").bind("click", function () {
+                $(function () {
+                    $('#sub').click(function () {
+                        $.ajax({
+                            type: "POST",
+                            url: "http://localhost:5276/Wage/FindWage",
+                            data: { EmployeeName: $(".form_text").val() },
+                            dataType: "json",
+                            error: function () {
+                                alert('Not Found!');
+                            },
+                            success: function (data) {
+                                var html = '<br /><table class="table"><tr><th>员工姓名</th><th>部门名称</th><th>职位</th><th>基础工资</th><th>补贴</th><th>奖金</th><th>罚金</th><th>实发工资</th></tr > ';
+
+                                $.each(data, function (commentIndex, comment) {
+                                    html += '<tr><th>' + comment['EmployeeName'] + '</th><th>' + comment['DepartmentName'] + '</th><th>' + comment['PositionName'] + '</th><th>' + comment['BasicWage'] + '</th><th > ' + comment['Subsidise'] + '</th><th>' + comment['AwardMoney'] + '</th><th>' + comment['FinedMoney'] + '</th><th>' + comment['FinalWage'] + '</th></tr> ';
+                                });
+                                html += '</table >'
+                                html += '<br />'
+                                $('#resText').html(html);
+                            }
+                        });
+                    });
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <br />
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3">
+            <div class="input-group">
+                <input type="text" class="form-control form_text" placeholder="Search By EmployeeName...">
+                <span class="input-group-btn">
+                    <button id="sub" class="btn btn-default" type="button">Search</button>
+                </span>
+            </div>
+        </div>
+    </div><br />
+    <div id="resText">
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

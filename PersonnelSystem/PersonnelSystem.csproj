@@ -142,6 +142,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PositionController.cs" />
     <Compile Include="Controllers\WageController.cs" />
+    <Compile Include="Vo\WageVo.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -182,6 +183,11 @@
       <DependentUpon>PersonnelModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vo\ContractVo.cs" />
+    <Compile Include="Vo\CourseVo.cs" />
+    <Compile Include="Vo\DepartmentVo.cs" />
+    <Compile Include="Vo\EmployeeVo.cs" />
+    <Compile Include="Vo\PositionVo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -273,6 +279,12 @@
     <Content Include="Views\Department\Details.cshtml" />
     <Content Include="Views\Department\Edit.cshtml" />
     <Content Include="Views\Department\Index.cshtml" />
+    <Content Include="Views\Contract\FindContract.cshtml" />
+    <Content Include="Views\Course\FindCourse.cshtml" />
+    <Content Include="Views\Department\FindDepartment.cshtml" />
+    <Content Include="Views\Position\FindPosition.cshtml" />
+    <Content Include="Views\Employee\FindEmployee.cshtml" />
+    <Content Include="Views\Wage\FindWage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

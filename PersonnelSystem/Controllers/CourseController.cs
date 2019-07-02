@@ -7,12 +7,46 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PersonnelSystem.Models;
+using PersonnelSystem.Vo;
 
 namespace PersonnelSystem.Controllers
 {
     public class CourseController : Controller
     {
         private PersonnelSystemEntities db = new PersonnelSystemEntities();
+
+
+        public ActionResult FindCourse()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult FindCourse(string CourseCode)
+        {
+            List<CourseVo> courses = null;
+            if (String.IsNullOrEmpty(CourseCode))
+            {
+                courses = db.Database.SqlQuery<CourseVo>(@"select CourseCode, CourseName, DepartmentName, StudentType, Hours, StartTime, EndTime, AccruedCount, AttendedCount, CourseRemark
+                from Course c, Department d
+                where c.DepartmentId = d.DepartmentId").ToList();
+                return Json(courses);
+            }
+            else
+            {
+                courses = db.Database.SqlQuery<CourseVo>(@"select CourseCode, CourseName, DepartmentName, StudentType, Hours, StartTime, EndTime, AccruedCount, AttendedCount, CourseRemark
+                from Course c, Department d
+                where c.DepartmentId = d.DepartmentId and CourseCode = " + CourseCode).ToList();
+            }
+            if (courses.Count == 0)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                return Json(courses);
+            }
+        }
 
         // GET: Course
         public ActionResult Index()
@@ -52,8 +86,8 @@ namespace PersonnelSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                //db.Course.Add(course);
-                //db.SaveChanges();
+                db.Course.Add(course);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 

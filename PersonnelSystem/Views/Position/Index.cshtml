@@ -9,6 +9,9 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<p>
+    @Html.ActionLink("FindPosition", "FindPosition")
+</p>
 <table class="table">
     <tr>
         <th>
@@ -23,23 +26,24 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Position1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Info)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Number)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PositionId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PositionId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PositionId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Info)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Number)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.PositionId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.PositionId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.PositionId })
+            </td>
+        </tr>
+    }
 
 </table>

@@ -9,6 +9,9 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<p>
+    @Html.ActionLink("FindEmployee", "FindEmployee")
+</p>
 <table class="table">
     <tr>
         <th>
@@ -50,50 +53,51 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sex)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateIntoCompany)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Phone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.QQ)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IDCard)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.School)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Remark)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Department.DepartmentName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Position.Position1)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.EmployeeId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.EmployeeId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.EmployeeId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sex)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateIntoCompany)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QQ)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDCard)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.School)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Remark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department.DepartmentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position.Position1)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.EmployeeId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.EmployeeId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.EmployeeId })
+            </td>
+        </tr>
+    }
 
 </table>

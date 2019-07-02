@@ -6,20 +6,12 @@
 
 <h2>Index</h2>
 
-<div>
+<p>
     @Html.ActionLink("Create New", "Create")
-</div>
-
-<div class="row">
-    <div class="col-lg-6 col-lg-offset-3">
-        <div class="input-group">
-            <input type="text" class="form-control form_text" placeholder="Search By EmployeeId...">
-            <span class="input-group-btn">
-                <button id="sub" class="btn btn-default" type="button">Search</button>
-            </span>
-        </div>
-    </div>
-</div><br />
+</p>
+<p>
+    @Html.ActionLink("FindContract", "FindContract")
+</p>
 <table class="table">
     <tr>
         <th>
@@ -46,7 +38,7 @@
         <th></th>
     </tr>
 
-    @foreach (PersonnelSystem.Models.Contract item in ViewBag.Contract != null ? ViewBag.Contract : Model)
+    @foreach (PersonnelSystem.Models.Contract item in Model)
     {
         <tr>
             <td>
@@ -79,29 +71,3 @@
     }
 
 </table>
-
-
-<script src="/Scripts/jquery-3.3.1.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $("#sub").bind("click", function () {
-            $(function () {
-                $('#sub').click(function () {
-                    $.ajax({
-                        type: "POST",
-                        url: "http://localhost:5276/Contract/FindContract",
-                        data: { employeeId: $(".form_text").val() },
-                        dataType: "json",
-                        error: function () {
-                            alert('smx失败 ');
-                        },
-                        success: function (data) {
-                            alert(data)
-                        }
-                    });
-                });
-            });
-        });
-    });
-
-</script>

@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PersonnelSystem.Models;
+using PersonnelSystem.Vo;
 
 namespace PersonnelSystem.Controllers
 {
@@ -14,19 +16,31 @@ namespace PersonnelSystem.Controllers
     {
         private PersonnelSystemEntities db = new PersonnelSystemEntities();
 
-
-        [HttpPost]
-        public ActionResult FindContract(int? employeeId)
+        
+        public ActionResult FindContract()
         {
-            if (employeeId == null)
+            return View();
+        }
+        [HttpPost]
+        public ActionResult FindContract(string EmployeeName)
+        {
+            List<ContractVo> contracts = null;
+            
+            if(String.IsNullOrEmpty(EmployeeName))
             {
-                return RedirectToAction("Index");
+                contracts = db.Database.SqlQuery<ContractVo>(@"select ContractId, ContractId, e.Name EmployeeName, SignTime, StartTime, EndTime, RenewCount, ProbationarySalary, OfficialSalary
+                        from Contract c, Employee e").ToList();
             }
-            var contracts = db.Contract.Where<Contract>(p => p.EmployeeId == employeeId).ToList();
-            if(contracts.Count == 0)
-                return Json("Not found!");
-            ViewBag.Contracts = contracts;
-            return RedirectToAction("Index");
+            else
+            {
+                contracts = db.Database.SqlQuery<ContractVo>(@"select ContractId, ContractId, e.Name EmployeeName, SignTime, StartTime, EndTime, RenewCount, ProbationarySalary, OfficialSalary
+                        from Contract c, Employee e
+                        where c.EmployeeId = e.EmployeeId and e.Name = @EmployeeName",
+                        new SqlParameter("@EmployeeName", EmployeeName)).ToList();
+            }
+            if (contracts.Count == 0)
+                return HttpNotFound();
+            return Json(contracts);
         }
 
         // GET: Contract

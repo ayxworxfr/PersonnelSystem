@@ -2,17 +2,46 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PersonnelSystem.Models;
+using PersonnelSystem.Vo;
 
 namespace PersonnelSystem.Controllers
 {
     public class DepartmentController : Controller
     {
         private PersonnelSystemEntities db = new PersonnelSystemEntities();
+
+
+        public ActionResult FindDepartment()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult FindDepartment(string DepartmentName)
+        {
+            List<DepartmentVo> departments = null;
+
+            if (String.IsNullOrEmpty(DepartmentName))
+            {
+                departments = db.Database.SqlQuery<DepartmentVo>(@"select DepartmentId, DepartmentName, Info, Address
+                        from Department").ToList();
+            }
+            else
+            {
+                departments = db.Database.SqlQuery<DepartmentVo>(@"select DepartmentId, DepartmentName, Info, Address
+                        from Department
+                        where DepartmentName = @DepartmentName",
+                        new SqlParameter("@DepartmentName", DepartmentName)).ToList();
+            }
+            if (departments.Count == 0)
+                return HttpNotFound();
+            return Json(departments);
+        }
 
         // GET: Department
         public ActionResult Index()

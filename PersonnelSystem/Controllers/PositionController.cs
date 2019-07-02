@@ -2,17 +2,45 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PersonnelSystem.Models;
+using PersonnelSystem.Vo;
 
 namespace PersonnelSystem.Controllers
 {
     public class PositionController : Controller
     {
         private PersonnelSystemEntities db = new PersonnelSystemEntities();
+
+        public ActionResult FindPosition()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult FindPosition(string PositionName)
+        {
+            List<PositionVo> positions = null;
+
+            if (String.IsNullOrEmpty(PositionName))
+            {
+                positions = db.Database.SqlQuery<PositionVo>(@"select PositionId, Position PositionName, Info, Number
+                        from Position").ToList();
+            }
+            else
+            {
+                positions = db.Database.SqlQuery<PositionVo>(@"select PositionId, Position PositionName, Info, Number
+                        from Position
+                        where Position = @PositionName",
+                        new SqlParameter("@PositionName", PositionName)).ToList();
+            }
+            if (positions.Count == 0)
+                return HttpNotFound();
+            return Json(positions);
+        }
 
         // GET: Position
         public ActionResult Index()

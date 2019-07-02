@@ -2,17 +2,47 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PersonnelSystem.Models;
+using PersonnelSystem.Vo;
 
 namespace PersonnelSystem.Controllers
 {
     public class WageController : Controller
     {
         private PersonnelSystemEntities db = new PersonnelSystemEntities();
+
+
+        public ActionResult FindWage()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult FindWage(string EmployeeName)
+        {
+            List<WageVo> Wages = null;
+
+            if (String.IsNullOrEmpty(EmployeeName))
+            {
+                Wages = db.Database.SqlQuery<WageVo>(@"select Name EmployeeName, DepartmentName, p.Position PositionName, BasicWage, Subsidise, AwardMoney, FinedMoney, FinalWage
+                        from Wage w, Employee e,Department d, Position p
+                        where w.EmployeeId = e.EmployeeId and w.DepartmentId = d.DepartmentId and e.PositionId = p.PositionId").ToList();
+            }
+            else
+            {
+                Wages = db.Database.SqlQuery<WageVo>(@"select Name EmployeeName, DepartmentName, p.Position PositionName, BasicWage, Subsidise, AwardMoney, FinedMoney, FinalWage
+                        from Wage w, Employee e,Department d, Position p
+                        where w.EmployeeId = e.EmployeeId and w.DepartmentId = d.DepartmentId and e.PositionId = p.PositionId and e.Name = @EmployeeName",
+                        new SqlParameter("@EmployeeName", EmployeeName)).ToList();
+            }
+            if (Wages.Count == 0)
+                return HttpNotFound();
+            return Json(Wages);
+        }
 
         // GET: Wage
         public ActionResult Index()

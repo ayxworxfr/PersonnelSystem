@@ -1,0 +1,83 @@
+﻿@model IEnumerable<PersonnelSystem.Models.Course>
+
+@{
+    ViewBag.Title = "FindCourse";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - WORXFR</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="/Scripts/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+        function timeStamp2String(time) {
+            var datetime = new Date();
+            datetime.setTime(time);
+            var year = datetime.getFullYear();
+            var month = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
+            var date = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
+            var hour = datetime.getHours() < 10 ? "0" + datetime.getHours() : datetime.getHours();
+            var minute = datetime.getMinutes() < 10 ? "0" + datetime.getMinutes() : datetime.getMinutes();
+            var second = datetime.getSeconds() < 10 ? "0" + datetime.getSeconds() : datetime.getSeconds();
+            return year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second;
+        }
+        $(document).ready(function () {
+            $("#sub").bind("click", function () {
+                $(function () {
+                    $('#sub').click(function () {
+                        $.ajax({
+                            type: "POST",
+                            url: "http://localhost:5276/Course/FindCourse",
+                            data: { CourseCode: $(".form_text").val() },
+                            dataType: "json",
+                            error: function () {
+                                alert('Not Found!');
+                            },
+                            success: function (data) {
+                                var getNum = /\/Date.([0-9]*)../;
+                                var html = '<br /><table class="table"><tr><th>课程代码</th><th>课程名称</th><th>学时</th><th>开始时间</th><th>结束时间</th><th>应参训人数</th><th>实际参训人数</th><th>课程备注</th><th>备注</th><th>部门名称</th></tr> ';
+
+                                $.each(data, function (commentIndex, comment) {
+                                    var StartTime = comment['StartTime'].match(getNum)[1];
+                                    StartTime = timeStamp2String(StartTime);
+                                    var EndTime = comment['EndTime'].match(getNum)[1];
+                                    EndTime = timeStamp2String(EndTime);
+                                    html += '<tr><th>' + comment['CourseCode'] + '</th><th>' + comment['CourseName'] + '</th><th>' + comment['StudentType'] + '</th><th>' + comment['Hours'] +'</th><th>' + StartTime + '</th><th>' + EndTime + '</th><th>' + comment['AccruedCount'] + '</th><th>' +comment['AttendedCount'] + '</th><th>' + comment['CourseRemark'] + '</th><th>' + comment['DepartmentName'] + '</th></tr>';
+                                });
+                                html += '</table >'
+                                html += '<br />'
+                                $('#resText').html(html);
+                            }
+                        });
+                    });
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <br />
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3">
+            <div class="input-group">
+                <input type="text" class="form-control form_text" placeholder="Search By CourseCode...">
+                <span class="input-group-btn">
+                    <button id="sub" class="btn btn-default" type="button">Search</button>
+                </span>
+            </div>
+        </div>
+    </div><br />
+    <div id="resText">
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>
