@@ -11,19 +11,13 @@ namespace PersonnelSystem.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Company
     {
-        [Display(Name = "公司ID")]
         public long CompanyId { get; set; }
-        [Display(Name = "公司名称", Description = "4-20个字符")]
         public string Name { get; set; }
-        [Display(Name = "公式地址", Description = "4-20个字符")]
         public string Address { get; set; }
-        [Display(Name = "公司电话", Description = "4-20个字符")]
         public string Phone { get; set; }
-        [Display(Name = "网址", Description = "4-20个字符")]
         public string WebSite { get; set; }
     }
 }

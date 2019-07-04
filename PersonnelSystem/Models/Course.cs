@@ -11,29 +11,18 @@ namespace PersonnelSystem.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Course
     {
-        [Display(Name = "课程代码", Description = "4-20个字符")]
         public string CourseCode { get; set; }
-        [Display(Name = "课程名称")]
         public string CourseName { get; set; }
-        [Display(Name = "部门ID")]
         public Nullable<long> DepartmentId { get; set; }
-        [Display(Name = "授课对象")]
         public string StudentType { get; set; }
-        [Display(Name = "学时")]
         public Nullable<int> Hours { get; set; }
-        [Display(Name = "开始时间")]
         public Nullable<System.DateTime> StartTime { get; set; }
-        [Display(Name = "结束时间")]
         public Nullable<System.DateTime> EndTime { get; set; }
-        [Display(Name = "应参训人数")]
         public Nullable<int> AccruedCount { get; set; }
-        [Display(Name = "实际参训人数")]
         public Nullable<int> AttendedCount { get; set; }
-        [Display(Name = "课程备注")]
         public string CourseRemark { get; set; }
     
         public virtual Department Department { get; set; }

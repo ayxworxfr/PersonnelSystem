@@ -4,14 +4,17 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<p>
-    @Html.ActionLink("FindContract", "FindContract")
-</p>
+<br />
+<div class="row">
+    <div class="col-lg-6 col-lg-offset-5">
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-default" onclick="window.location.href = 'Create'">Create</button>
+            <button type="button" class="btn btn-default" onclick="window.location.href = 'FindWage'">Find</button>
+        </div>
+    </div>
+</div>
+<br />
 <table class="table">
     <tr>
         <th>
@@ -63,11 +66,47 @@
                 @Html.DisplayFor(modelItem => item.Employee.Name)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ContractId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ContractId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ContractId })
+                <span class="label label-info">@Html.ActionLink("Edit", "Edit", new { id = item.ContractId })</span>
+                <span class="label label-info">@Html.ActionLink("Details", "Details", new { id = item.ContractId })</span>
+                <span class="label label-danger">@Html.ActionLink("Delete", "Delete", new { id = item.ContractId })</span>
             </td>
         </tr>
     }
 
 </table>
+
+
+<div>
+    <nav aria-label="...">
+        <ul class="pagination">
+            <li><a href="@ViewBag.page_head">Head</a></li>
+            <li>
+                <a href="@ViewBag.page_pre" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            @for (int page = ViewBag.page_nav_start; page < ViewBag.page_nav_start + ViewBag.page_nav; page++)
+            {
+                if (page == ViewBag.page_now)
+                {
+                    <li class="active"><a href="@ViewBag.path@page">@page<span class="sr-only">(current)</span></a></li>
+                }
+                else if (page < ViewBag.page_total)
+                {
+                    <li><a href="@ViewBag.path@page">@page</a></li>
+                }
+
+                if (page == ViewBag.page_nav_start + ViewBag.page_nav - 1 && page < ViewBag.page_total)
+                {
+                    <li><a href="#">…</a></li>
+                }
+            }
+            <li>
+                <a href="@ViewBag.page_next" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+            <li><a href="@ViewBag.page_tail">Tail</a></li>
+        </ul>
+    </nav>
+</div>

@@ -15,6 +15,13 @@ namespace PersonnelSystem.Controllers
     public class EmployeeController : Controller
     {
         private PersonnelSystemEntities db = new PersonnelSystemEntities();
+        static int page_now = 1;                        // 当前页
+        static int page_total = 0;                      // 总页数
+        static int page_pre = 0;                        // 上一页
+        static int page_next = 2;                       // 下一页
+        static int page_show = 2;                       // 一页展示数量
+        static int page_nav_start = 1;                  // 导航页展示数量
+        static int page_nav = 5;                        // 导航页展示数量
 
 
         public ActionResult FindEmployee()
@@ -45,10 +52,34 @@ namespace PersonnelSystem.Controllers
         }
 
         // GET: Employee
-        public ActionResult Index()
+        public ActionResult Index(int? page_num)
         {
-            var employee = db.Employee.Include(e => e.Department).Include(e => e.Position);
-            return View(employee.ToList());
+            if (page_num == null)
+                page_num = 1;
+            page_now = (int)page_num;
+            page_pre = (int)page_now - 1;
+            page_next = (int)page_now + 1;
+            page_total = (int)Math.Floor((double)db.Contract.Count() / page_show) + 1;
+            page_nav_start = page_now - page_now % page_nav + 1;
+            page_nav_start = page_now % page_nav == 0 ? page_now - page_nav + 1 : page_nav_start;
+            if (page_pre < 1) page_pre = 1;
+            if (page_next > page_total) page_next = page_total;
+            ViewBag.path = "/Employee/Index?page_num=";
+            ViewBag.page_head = ViewBag.path + 1;
+            ViewBag.page_pre = ViewBag.path + page_pre;
+            ViewBag.page_next = ViewBag.path + page_next;
+            ViewBag.page_tail = ViewBag.path + page_total;
+            ViewBag.page_now = page_now;
+            ViewBag.page_total = page_total;
+            ViewBag.page_nav = page_nav;
+            ViewBag.page_nav_start = page_nav_start;
+
+            var employees = db.Employee.Include(e => e.Department).Include(e => e.Position).OrderBy(o => o.DepartmentId).Skip(((int)page_num - 1) * page_show).Take(page_show);
+            return View("Index", employees.ToList());
+
+
+            //var employee = db.Employee.Include(e => e.Department).Include(e => e.Position);
+            //return View(employee.ToList());
         }
 
         // GET: Employee/Details/5

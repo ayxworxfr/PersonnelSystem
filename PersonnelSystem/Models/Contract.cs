@@ -11,25 +11,16 @@ namespace PersonnelSystem.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Contract
     {
-        [Display(Name = "合同ID")]
         public long ContractId { get; set; }
-        [Display(Name = "员工ID")]
         public Nullable<long> EmployeeId { get; set; }
-        [Display(Name = "签订时间")]
         public Nullable<System.DateTime> SignTime { get; set; }
-        [Display(Name = "开始时间")]
         public Nullable<System.DateTime> StartTime { get; set; }
-        [Display(Name = "结束时间")]
         public Nullable<System.DateTime> EndTime { get; set; }
-        [Display(Name = "续约次数")]
         public Nullable<int> RenewCount { get; set; }
-        [Display(Name = "试用月薪")]
         public Nullable<double> ProbationarySalary { get; set; }
-        [Display(Name = "正式月薪")]
         public Nullable<double> OfficialSalary { get; set; }
     
         public virtual Employee Employee { get; set; }

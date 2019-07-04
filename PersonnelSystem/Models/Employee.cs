@@ -11,8 +11,7 @@ namespace PersonnelSystem.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Employee
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,32 +20,19 @@ namespace PersonnelSystem.Models
             this.Contract = new HashSet<Contract>();
             this.Wage = new HashSet<Wage>();
         }
-
-        [Display(Name = "员工ID")]
+    
         public long EmployeeId { get; set; }
-        [Display(Name = "姓名")]
         public string Name { get; set; }
-        [Display(Name = "性别")]
         public string Sex { get; set; }
-        [Display(Name = "部门ID")]
         public Nullable<long> DepartmentId { get; set; }
-        [Display(Name = "职位ID")]
         public Nullable<long> PositionId { get; set; }
-        [Display(Name = "进入公司时间")]
         public Nullable<System.DateTime> DateIntoCompany { get; set; }
-        [Display(Name = "电话")]
         public string Phone { get; set; }
-        [Display(Name = "QQ")]
         public string QQ { get; set; }
-        [Display(Name = "家庭地址")]
         public string Address { get; set; }
-        [Display(Name = "邮箱")]
         public string Email { get; set; }
-        [Display(Name = "身份证")]
         public string IDCard { get; set; }
-        [Display(Name = "毕业学校")]
         public string School { get; set; }
-        [Display(Name = "备注")]
         public string Remark { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

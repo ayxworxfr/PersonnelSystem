@@ -15,8 +15,15 @@ namespace PersonnelSystem.Controllers
     public class ContractController : Controller
     {
         private PersonnelSystemEntities db = new PersonnelSystemEntities();
+        static int page_now = 1;                        // 当前页
+        static int page_total = 0;                      // 总页数
+        static int page_pre = 0;                        // 上一页
+        static int page_next = 2;                       // 下一页
+        static int page_show = 2;                       // 一页展示数量
+        static int page_nav_start = 1;                  // 导航页展示数量
+        static int page_nav = 2;                        // 导航页展示数量
 
-        
+
         public ActionResult FindContract()
         {
             return View();
@@ -44,10 +51,32 @@ namespace PersonnelSystem.Controllers
         }
 
         // GET: Contract
-        public ActionResult Index()
+        public ActionResult Index(int? page_num)
         {
-            var contract = db.Contract.Include(c => c.Employee);
-            return View(contract.ToList());
+            if (page_num == null)
+                page_num = 1;
+            page_now = (int)page_num;
+            page_pre = (int)page_now - 1;
+            page_next = (int)page_now + 1;
+            page_total = (int)Math.Floor((double)db.Contract.Count() / page_show) + 1;
+            page_nav_start = page_now - page_now % page_nav + 1;
+            page_nav_start = page_now % page_nav == 0 ? page_now - page_nav + 1 : page_nav_start;
+            if (page_pre < 1) page_pre = 1;
+            if (page_next > page_total) page_next = page_total;
+            ViewBag.path = "/Contract/Index?page_num=";
+            ViewBag.page_head = ViewBag.path + 1;
+            ViewBag.page_pre = ViewBag.path + page_pre;
+            ViewBag.page_next = ViewBag.path + page_next;
+            ViewBag.page_tail = ViewBag.path + page_total;
+            ViewBag.page_now = page_now;
+            ViewBag.page_total = page_total;
+            ViewBag.page_nav = page_nav;
+            ViewBag.page_nav_start = page_nav_start;
+
+            var contracts = db.Contract.Include(c => c.Employee).OrderBy(o => o.EndTime).Skip(((int)page_num - 1) * page_show).Take(page_show);
+            return View("Index", contracts.ToList());
+            //var contract = db.Contract.Include(c => c.Employee);
+            //return View(contract.ToList());
         }
 
         // GET: Contract/Details/5

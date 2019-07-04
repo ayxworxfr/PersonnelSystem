@@ -11,27 +11,17 @@ namespace PersonnelSystem.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Wage
     {
-        [Display(Name = "工资ID")]
         public long WageId { get; set; }
-        [Display(Name = "员工ID")]
         public Nullable<long> EmployeeId { get; set; }
-        [Display(Name = "部门ID")]
         public Nullable<long> DepartmentId { get; set; }
-        [Display(Name = "职位ID")]
         public Nullable<long> PositionId { get; set; }
-        [Display(Name = "基础工资")]
         public Nullable<double> BasicWage { get; set; }
-        [Display(Name = "补贴")]
         public Nullable<double> Subsidise { get; set; }
-        [Display(Name = "奖金")]
         public Nullable<double> AwardMoney { get; set; }
-        [Display(Name = "罚金")]
         public Nullable<double> FinedMoney { get; set; }
-        [Display(Name = "实发工资")]
         public Nullable<double> FinalWage { get; set; }
     
         public virtual Department Department { get; set; }

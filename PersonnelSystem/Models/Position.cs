@@ -11,8 +11,7 @@ namespace PersonnelSystem.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Position
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,14 +20,10 @@ namespace PersonnelSystem.Models
             this.Employee = new HashSet<Employee>();
             this.Wage = new HashSet<Wage>();
         }
-
-        [Display(Name = "职位ID")]
+    
         public long PositionId { get; set; }
-        [Display(Name = "职位")]
         public string Position1 { get; set; }
-        [Display(Name = "描述")]
         public string Info { get; set; }
-        [Display(Name = "职位人数")]
         public Nullable<long> Number { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -4,14 +4,17 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<p>
-    @Html.ActionLink("FindWage", "FindWage")
-</p>
+<br />
+<div class="row">
+    <div class="col-lg-6 col-lg-offset-5">
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-default" onclick="window.location.href = 'Create'">Create</button>
+            <button type="button" class="btn btn-default" onclick="window.location.href = 'FindWage'">Find</button>
+        </div>
+    </div>
+</div>
+<br />
 <table class="table">
     <tr>
         <th>
@@ -69,9 +72,9 @@
                 @Html.DisplayFor(modelItem => item.Position.Position1)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.WageId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.WageId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.WageId })
+                <span class="label label-info">@Html.ActionLink("Edit", "Edit", new { id = item.WageId })</span>
+                <span class="label label-info">@Html.ActionLink("Details", "Details", new { id = item.WageId })</span>
+                <span class="label label-danger">@Html.ActionLink("Delete", "Delete", new { id = item.WageId })</span>
             </td>
         </tr>
     }

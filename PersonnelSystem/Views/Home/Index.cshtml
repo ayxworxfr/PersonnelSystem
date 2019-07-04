@@ -2,33 +2,100 @@
     ViewBag.Title = "Home Page";
 }
 
+<br />
+<div class="row">
+    <div class="col-sm-6 col-md-3">
+        <div class="panel panel-info">
+            <div class="panel-heading" style="font-size:large; text-align:center">公司总人数</div>
+            <div class="panel-body" style="font-size:large; text-align:center">
+                @ViewBag.EmployeeCount
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+        <div class="panel panel-info">
+            <div class="panel-heading" style="font-size:large; text-align:center">公司总部门数</div>
+            <div class="panel-body" style="font-size:large; text-align:center">
+                @ViewBag.DepartmentCount
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+        <div class="panel panel-info">
+            <div class="panel-heading" style="font-size:large; text-align:center">还未结束的课程数量</div>
+            <div class="panel-body" style="font-size:large; text-align:center">
+                @ViewBag.CourseCount
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+        <div class="panel panel-info">
+            <div class="panel-heading" style="font-size:large; text-align:center">还未结束的合同数量</div>
+            <div class="panel-body" style="font-size:large; text-align:center">
+                @ViewBag.ContractCount
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="panel panel-danger">
+            <div class="panel-heading" style="font-size:large; text-align:center">Company</div>
+            <div class="panel-body" style="font-size:large; text-align:center">
+                <a class="btn btn-default" href="http://localhost:5276/Company/Index">Go &raquo;</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="row">
     <div class="col-md-4">
-        <h2>Company</h2>
-        <p><a class="btn btn-default" href="http://localhost:5276/Company/Index">Go &raquo;</a></p>
+        <div class="panel panel-warning">
+            <div class="panel-heading" style="font-size:large; text-align:center">Contract</div>
+            <div class="panel-body" style="font-size:large; text-align:center">
+                <a class="btn btn-default" href="http://localhost:5276/Contract/Index">Go &raquo;</a>
+            </div>
+        </div>
     </div>
     <div class="col-md-4">
-        <h2>Contract</h2>
-        <p><a class="btn btn-default" href="http://localhost:5276/Contract/Index">Go &raquo;</a></p>
+        <div class="panel panel-warning">
+            <div class="panel-heading" style="font-size:large; text-align:center">Course</div>
+            <div class="panel-body" style="font-size:large; text-align:center">
+                <a class="btn btn-default" href="http://localhost:5276/Course/Index">Go &raquo;</a>
+            </div>
+        </div>
     </div>
     <div class="col-md-4">
-        <h2>Course</h2>
-        <p><a class="btn btn-default" href="http://localhost:5276/Course/Index">Go &raquo;</a></p>
+        <div class="panel panel-warning">
+            <div class="panel-heading" style="font-size:large; text-align:center">Department</div>
+            <div class="panel-body" style="font-size:large; text-align:center">
+                <a class="btn btn-default" href="http://localhost:5276/Department/Index">Go &raquo;</a>
+            </div>
+        </div>
     </div>
     <div class="col-md-4">
-        <h2>Department</h2>
-        <p><a class="btn btn-default" href="http://localhost:5276/Department/Index">Go &raquo;</a></p>
+        <div class="panel panel-warning">
+            <div class="panel-heading" style="font-size:large; text-align:center">Employee</div>
+            <div class="panel-body" style="font-size:large; text-align:center">
+                <a class="btn btn-default" href="http://localhost:5276/Employee/Index">Go &raquo;</a>
+            </div>
+        </div>
     </div>
     <div class="col-md-4">
-        <h2>Employee</h2>
-        <p><a class="btn btn-default" href="http://localhost:5276/Employee/Index">Go &raquo;</a></p>
+        <div class="panel panel-warning">
+            <div class="panel-heading" style="font-size:large; text-align:center">Position</div>
+            <div class="panel-body" style="font-size:large; text-align:center">
+                <a class="btn btn-default" href="http://localhost:5276/Position/Index">Go &raquo;</a>
+            </div>
+        </div>
     </div>
     <div class="col-md-4">
-        <h2>Position</h2>
-        <p><a class="btn btn-default" href="http://localhost:5276/Position/Index">Go &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Wage</h2>
-        <p><a class="btn btn-default" href="http://localhost:5276/Wage/Index">Go &raquo;</a></p>
+        <div class="panel panel-warning">
+            <div class="panel-heading" style="font-size:large; text-align:center">Wage</div>
+            <div class="panel-body" style="font-size:large; text-align:center">
+               <a class="btn btn-default" href="http://localhost:5276/Wage/Index">Go &raquo;</a>
+            </div>
+        </div>
     </div>
 </div>
