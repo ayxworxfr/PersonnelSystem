@@ -142,6 +142,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PositionController.cs" />
     <Compile Include="Controllers\WageController.cs" />
+    <Compile Include="Extensions\UserAuthorize.cs" />
     <Compile Include="Vo\WageVo.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -218,6 +219,10 @@
       <DependentUpon>PersonnelModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\login\jquery1.js" />
+    <Content Include="Scripts\login\Particleground.js" />
+    <Content Include="Scripts\login\style2.css" />
+    <Content Include="Scripts\login\verificationNumbers.js" />
     <Content Include="Scripts\moment-with-locales.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -285,6 +290,7 @@
     <Content Include="Views\Position\FindPosition.cshtml" />
     <Content Include="Views\Employee\FindEmployee.cshtml" />
     <Content Include="Views\Wage\FindWage.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

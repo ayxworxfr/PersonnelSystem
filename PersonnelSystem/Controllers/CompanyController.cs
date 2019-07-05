@@ -6,10 +6,12 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Login.Extensions;
 using PersonnelSystem.Models;
 
 namespace PersonnelSystem.Controllers
 {
+    [UserAuthorize]
     public class CompanyController : Controller
     {
         private PersonnelSystemEntities db = new PersonnelSystemEntities();

@@ -7,11 +7,13 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Login.Extensions;
 using PersonnelSystem.Models;
 using PersonnelSystem.Vo;
 
 namespace PersonnelSystem.Controllers
 {
+    [UserAuthorize]
     public class ContractController : Controller
     {
         private PersonnelSystemEntities db = new PersonnelSystemEntities();

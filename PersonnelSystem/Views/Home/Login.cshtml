@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>后台登录</title>
+    <meta name="author" content="DeathGhost" />
+    <link rel="stylesheet" type="text/css" href="~/Scripts/login/style2.css" />
+    <style>
+        body {
+            height: 100%;
+            background: #16a085;
+            overflow: hidden;
+        }
+
+        canvas {
+            z-index: -1;
+            position: absolute;
+        }
+    </style>
+    @*<script src="~/Scripts/login/jquery1.js"></script>*@
+    <script src="~/Scripts/login/verificationNumbers.js"></script>
+    <script src="~/Scripts/login/Particleground.js"></script>
+    <script src="/Scripts/jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            //粒子背景特效
+            $('body').particleground({
+                dotColor: '#5cbdaa',
+                lineColor: '#5cbdaa'
+            });
+            //测试提交，对接程序删除即可
+            $(".submit_btn").click(function () {
+                //location.href = "index.html";
+                //alert($("#Name").val())
+                //$.ajax({
+                //    type: "POST",
+                //    url: "http://localhost:5276/Home/Login",
+                //    data: {
+                //        Name: $("#Name").val(),
+                //        Phone: $("#Phone").val()
+                //    },
+                //    dataType: "json",
+                //    error: function () {
+                //        alert('Not Found!');
+                //    },
+                //    success: function (data) {
+                //    }
+                //});
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#sub").bind("click", function () {
+                $(function () {
+                    $('#sub').click(function () {
+                        $.ajax({
+                            type: "POST",
+                            url: "http://localhost:5276/Home/Login",
+                            data: {
+                                Name: $("#Name").val(),
+                                Phone: $("#Phone").val()
+                            },
+                            dataType: "json",
+                            error: function () {
+                                alert('用户名或密码错误！');
+                            },
+                            success: function (data) {
+                                location.href = "Index";
+                            }
+                        });
+                    });
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+        <dl class="admin_login">
+            <dt>
+                <strong>登陆</strong>
+                <em>Management System</em>
+            </dt>
+            <dd class="user_icon">
+                <input type="text" placeholder="账号" id="Name" class="login_txtbx" />
+            </dd>
+            <dd class="pwd_icon">
+                <input type="password" placeholder="密码" id="Phone" class="login_txtbx" />
+            </dd>
+            <dd>
+                <input id="sub" type="button" value="立即登陆" class="submit_btn" />
+            </dd>
+            <dd>
+            </dd>
+        </dl>
+</body>
+</html>
